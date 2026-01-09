@@ -6,5 +6,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(MYSQL REQUIRED mysqlclient)
 
-add_executable(wehopeitruns src/main.cpp)
+set(SOURCE_FILES src/main.cpp src/tree.cpp)
+set(HEADER_FILES include/tree.hpp)
+
+add_executable(wehopeitruns ${SOURCE_FILES} ${HEADER_FILES})
+
+target_include_directories(wehopeitruns PRIVATE
+	${CMAKE_SOURCE_DIR}/include
+)
 
